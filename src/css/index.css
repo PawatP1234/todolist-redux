@@ -1,0 +1,9 @@
+.inputcss {
+  margin-right: 0.4em;
+  outline: none;
+}
+
+.container {
+  height: auto;
+  width: 50%;
+}

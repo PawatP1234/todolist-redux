@@ -33,7 +33,7 @@ const userReducer = (state=userState,action) => {
   return state;
 }
 
-const salaryReducer = (state=initialState,action) => {
+const todoList = (state=initialState,action) => {
   switch (action.type) {
     case 'ADD':
       state = {
@@ -56,7 +56,7 @@ const myLogger=(store)=>(next)=>(action)=>{
   console.log('Log Action : ',action);
   next(action);
 }
-const store = createStore(combineReducers({salary: salaryReducer,user: userReducer}),{},applyMiddleware(myLogger));
+const store = createStore(combineReducers({todo: todoList,user: userReducer}),{},applyMiddleware(myLogger));
 
 store.subscribe(()=>{
   console.log('Update Store : ',store.getState());

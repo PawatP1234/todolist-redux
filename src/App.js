@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import List from './list.js';
 import { connect } from 'react-redux';
+import './css/index.css';
 
 class App extends Component {
   constructor(props) {
@@ -10,22 +11,37 @@ class App extends Component {
       test: ''
     };
   }
+  
   handleChange (e) {
     this.setState({ test: e.target.value });
   }
 
   clearInput () {
-    this.props.ADD(this.state.test);
-    this.setState({test: ''});
+    if(this.state.test === ''){
+      alert('Please insert to do list')
+    } else {
+      this.props.ADD(this.state.test);
+      this.setState({test: ''});
+    }
+  }
+
+  enterKey (e) {
+    if(e.key === 'Enter'){
+      this.clearInput();
+    }
   }
 
   render() {
 
     return(
-      <div>
-        <input type='text' placeholder='Add to do list...' value={this.state.test} onChange={this.handleChange.bind(this)} />
+      <div className='container'>
+        <input className='inputcss' type='text' 
+          placeholder='Add to do list...' value={this.state.test} 
+          onChange={this.handleChange.bind(this)}
+          onKeyPress={this.enterKey.bind(this)}
+        />
         <button type='submit' onClick={this.clearInput.bind(this)}>ADD LIST</button>
-        <List todoList={this.props.salary.todolist}/>
+        <List todoList={this.props.todo.todolist}/>
       </div>
     );
   }
@@ -33,7 +49,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    salary: state.salary,
+    todo: state.todo,
     user: state.user,
   }
 }
