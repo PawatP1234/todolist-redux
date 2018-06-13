@@ -31,8 +31,11 @@ class App extends Component {
     }
   }
 
-  render() {
+  changeTodo (msg,index) {
+    this.props.UPDATE(msg,index)
+  }
 
+  render() {
     return(
       <div className='container'>
         <input className='inputcss' type='text' 
@@ -41,7 +44,9 @@ class App extends Component {
           onKeyPress={this.enterKey.bind(this)}
         />
         <button type='submit' onClick={this.clearInput.bind(this)}>ADD LIST</button>
-        <List todoList={this.props.todo.todolist}/>
+        <List todoList={this.props.todo.todolist}
+          callback={(msg,index) => this.changeTodo(msg,index)}
+        />
       </div>
     );
   }
@@ -62,6 +67,13 @@ const mapDispatchToProps = (dispatch) => {
         payload: doList,
       });
     },
+    UPDATE : (msg,index) => {
+      dispatch({
+        type: 'UPDATE',
+        payload: msg,
+        temp: index,
+      });
+    }
   }
 }
 

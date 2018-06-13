@@ -31,3 +31,15 @@
   color: #fff;
   background-color: #009E89;
 }
+
+.formHide {
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  right: 35%;
+  display: none;
+}
+
+.inputHide {
+  margin-right: 0.5em;
+}

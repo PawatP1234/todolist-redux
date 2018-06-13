@@ -7,8 +7,15 @@ function completeListItem (index) {
   document.getElementById(index).style.color = 'green';
 }
 
-function editListItem (todoList) {
-  console.log(todoList);
+function editListItem () {
+  document.getElementById('formHide').style.display = 'none';
+  const temp = document.getElementById('changeTodo').value;
+  return temp;
+}
+
+function openEditer (index) {
+  document.getElementById('formHide').style.display = 'block';
+  return index;
 }
 
 export const removeList = (index) => {
@@ -19,6 +26,10 @@ export const completeList = (index) => {
   completeListItem(index);
 }
 
-export const editList = (todoList) => {
-  editListItem(todoList);
+export const editList = () => {
+  return editListItem();
+}
+
+export const openEdit = (index) => {
+  return openEditer(index);
 }

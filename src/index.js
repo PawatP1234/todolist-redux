@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 const initialState = {
   salary: 15000,
   todolist:[],
+  index: 0,
 }
 
 const userState = {
@@ -39,12 +40,21 @@ const todoList = (state=initialState,action) => {
       state = {
         ...state,
         todolist: [...state.todolist,action.payload],
+        index: state.index += 1,
       }
     break;
-    case 'SUB':
+    case 'UPDATE':
+      let temp = [];
+      {state.todolist.map(function(msg,index){
+        if(index === action.temp){
+          temp.push(action.payload);
+        } else {
+          temp.push(msg);
+        }
+        console.log('Temp : ',temp);
+      });}
       state = {
-        ...state,
-        todolist: [...state.todolist,action.payload],
+        todolist: temp,
       }
     break;
     default:
