@@ -17,7 +17,7 @@ class List extends Component{
   }
 
   render() {
-    const { todoList, callback, indexCallback } = this.props;
+    const { todoList, callback } = this.props;
     let mythis = this
       return(
         <div className='container'>

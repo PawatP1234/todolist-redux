@@ -10,6 +10,7 @@ function completeListItem (index) {
 function editListItem () {
   document.getElementById('formHide').style.display = 'none';
   const temp = document.getElementById('changeTodo').value;
+  document.getElementById('changeTodo').value = '';
   return temp;
 }
 
